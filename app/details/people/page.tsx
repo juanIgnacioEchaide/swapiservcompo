@@ -2,11 +2,10 @@ import { api } from "@/services/api"
 
 export default async function People() {
 
-    const { results, next } = await api.getPeople(2)
+    const data = await api.getPeople(5)
 
     return (<div>
                 <p>people</p>
-                <p>{JSON.stringify(results)}</p>
-                <p>{next}</p>
+                <p>{JSON.stringify(data)}</p>
             </div>)
 }

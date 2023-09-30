@@ -31,3 +31,5 @@ export const wording = {
     title: 'Swapi Next JS Example',
     footer: 'Juan Ignacio Echaide - Swapi example - 2023'
 }
+
+export const DEFAULT_FETCH_AMOUNT = 10
