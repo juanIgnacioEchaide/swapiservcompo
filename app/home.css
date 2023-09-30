@@ -1,0 +1,24 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__button {
+    width: 200px;
+    height: 450px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home__button:hover {
+    background-color: #0056b3;
+}
