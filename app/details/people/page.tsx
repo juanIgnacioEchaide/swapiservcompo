@@ -1,15 +1,16 @@
 import ItemsListContainer from "@/components/ItemsListContainer"
 import { api } from "@/services/api"
+import { Title } from "@/utils/constants"
 
 export default async function People() {
 
-    const data = await api.getPeople()
+    const { data, pages } = await api.getPeople()
 
     return (<div>
-                <ItemsListContainer 
-                    items={data} 
-                    title={'People'} 
-                    pages={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} 
+                <ItemsListContainer
+                    items={data}
+                    title={Title.PEOPLE}
+                    pages={pages}
                 />
             </div>)
 }

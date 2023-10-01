@@ -16,15 +16,15 @@ export enum DETAILS_ROUTE {
     VEHICLES = 'details/vehicles',
 }
 
-export const apiRouteByDetails = {
-    [URI.PEOPLE]: DETAILS_ROUTE.PEOPLE,
-    [URI.STARSHIP]: DETAILS_ROUTE.STARSHIP,
-    [URI.PLANET]: DETAILS_ROUTE.PLANET,
-    [URI.FILMS]: DETAILS_ROUTE.FILMS,
-    [URI.SPECIES]: DETAILS_ROUTE.SPECIES,
-    [URI.VEHICLES]: DETAILS_ROUTE.VEHICLES,
-  };
-  
+export enum Title {
+    PEOPLE = 'People',
+    STARSHIP = 'Starships',
+    PLANET = 'Planets',
+    FILMS = 'Films',
+    SPECIES = 'Species',
+    VEHICLES = 'Vehicles',
+}
+
 export const fontFamily = "'Mona Sans', sans-serif"
 
 export const wording = {
