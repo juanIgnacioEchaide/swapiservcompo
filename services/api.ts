@@ -1,5 +1,6 @@
 import { PagesChunkResult } from "@/models/api";
 import { DEFAULT_FETCH_AMOUNT, URI } from "@/utils/constants";
+import NodeCache from "node-cache";
 
 async function getSinglePage(url: URI, page?: number) {
     const _url = !page ? url : `${url}?page=${page}`
@@ -20,6 +21,14 @@ async function getSinglePage(url: URI, page?: number) {
 }
 
 async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult> {
+    const cache = new NodeCache();
+    const cacheKey = !page ? `${url}`: `${url.split('?page=')[0]}`
+    const cachedData = cache.get(cacheKey) as PagesChunkResult | undefined;
+
+    if (cachedData) {
+        return cachedData;
+    }
+
     let currentFetch = !page ? 1 : page;
     const fetchLimit = !page ? DEFAULT_FETCH_AMOUNT : page + DEFAULT_FETCH_AMOUNT;
     const dataChunks: SwapiEntity[][] = [];
@@ -36,10 +45,16 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
         }
     }
 
-    return {
+    const result: PagesChunkResult = {
         data: dataChunks,
         pages: fetchedPages,
+        lastPageFetched: currentFetch - 1, // Save the last fetched page number
     };
+
+    // Store the fetched data along with the lastPageFetched value in the cache
+    cache.set(cacheKey, result, /* TTL in seconds, for example: */ 3600);
+
+    return result;
 }
 
 export const api = {
