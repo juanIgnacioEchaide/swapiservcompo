@@ -3,18 +3,19 @@ import PageTitle from "@/components/page/pageTitle"
 import { api } from "@/services/api"
 import { Title } from "@/utils/constants"
 
-export default async function People() {
+export default async function People({ params }: { params: { lastFetchedPage: number } }) {
 
-    const { data, pages } = await api.getPeople()
+    const { data, availablePages, lastPageFetched } = await api.getPeople(params?.lastFetchedPage)
 
     return (<div>
-                <PageTitle title={Title.PEOPLE as string} />
-                <ItemsListContainer
-                    items={data}
-                    title={Title.PEOPLE}
-                    pages={pages}
-                />
-            </div>)
+        {JSON.stringify(availablePages)}
+        <PageTitle title={Title.PEOPLE as string} />
+        <ItemsListContainer
+            items={data}
+            title={Title.PEOPLE}
+            availablePages={availablePages}
+        />
+    </div>)
 }
 
 /* TODO:

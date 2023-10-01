@@ -1,6 +1,6 @@
 import { PagesChunkResult } from "@/models/api";
 import { DEFAULT_FETCH_AMOUNT, URI } from "@/utils/constants";
-import NodeCache from "node-cache";
+import CacheManager from "@/lib/cache-manager"
 
 async function getSinglePage(url: URI, page?: number) {
     const _url = !page ? url : `${url}?page=${page}`
@@ -21,9 +21,9 @@ async function getSinglePage(url: URI, page?: number) {
 }
 
 async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult> {
-    const cache = new NodeCache();
-    const cacheKey = !page ? `${url}`: `${url.split('?page=')[0]}`
-    const cachedData = cache.get(cacheKey) as PagesChunkResult | undefined;
+    const cacheKey = CacheManager.getCacheKey(url, page);
+    const cachedData = CacheManager.getDataFromCache(cacheKey);
+    let availablePages: number = 0;
 
     if (cachedData) {
         return cachedData;
@@ -31,15 +31,15 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
 
     let currentFetch = !page ? 1 : page;
     const fetchLimit = !page ? DEFAULT_FETCH_AMOUNT : page + DEFAULT_FETCH_AMOUNT;
-    const dataChunks: SwapiEntity[][] = [];
-    const fetchedPages: number[] = [];
+    const dataChunks: any[][] = [];
 
     while (currentFetch <= fetchLimit) {
         try {
-            let currentData = await getSinglePage(url, currentFetch);
+            const currentData = await getSinglePage(url, currentFetch);
+            availablePages = currentData?.count
             dataChunks.push(currentData?.results);
-            fetchedPages.push(currentFetch);
             currentFetch++;
+            
         } catch (e: any) {
             throw new Error(e.message);
         }
@@ -47,15 +47,15 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
 
     const result: PagesChunkResult = {
         data: dataChunks,
-        pages: fetchedPages,
-        lastPageFetched: currentFetch - 1, // Save the last fetched page number
+        lastPageFetched: currentFetch - 1,
+        availablePages: availablePages
     };
 
-    // Store the fetched data along with the lastPageFetched value in the cache
-    cache.set(cacheKey, result, /* TTL in seconds, for example: */ 3600);
+    CacheManager.setDataToCache(cacheKey, result, 3600);
 
     return result;
 }
+
 
 export const api = {
     getPeople: (page?: number) => getPagesChunk(URI.PEOPLE, page),

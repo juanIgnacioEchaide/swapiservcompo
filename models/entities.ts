@@ -1,4 +1,4 @@
-interface People {
+export interface People {
     name: string
     height: string,
     mass: string,
@@ -17,7 +17,7 @@ interface People {
     url: string[]
 }
 
-interface Planet {
+export interface Planet {
     name: string,
     rotationPeriod: string,
     orbitalPeriod: string,
@@ -34,7 +34,7 @@ interface Planet {
     url: string
 }
 
-interface Starship {
+export interface Starship {
     name: string,
     model: string,
     manufacturer: string,
@@ -55,7 +55,7 @@ interface Starship {
     url: string
 }
 
-interface Vehicle {
+export interface Vehicle {
     cargoCapacity: string,
     consumables: string,
     costInCredits: string,
@@ -75,7 +75,7 @@ interface Vehicle {
     vehicleClass: string,
 }
 
-interface Film {
+export interface Film {
     characters: string[],
     created: string,
     director: string,
@@ -92,7 +92,7 @@ interface Film {
     vehicles: string[]
 }
 
-interface Specie {
+export interface Specie {
     averageHeight: string
     averageLifespan: string
     classification: string
@@ -110,11 +110,11 @@ interface Specie {
     url: string
 }
 
-interface SwapiResponse<T> {
+export interface SwapiResponse<SwapiEntity> {
     count: number,
     next: string | null,
     previous: string | null,
-    results?: T[] | T
+    results?: SwapiEntity[] | undefined
 }
 
-type SwapiEntity = People | Film | Starship | Vehicle | Planet
+export type SwapiEntity = People | Film | Starship | Vehicle | Planet

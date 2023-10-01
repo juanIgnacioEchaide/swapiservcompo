@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react"
 
 interface ItemsPagesProps {
     setCurrentChunk: Dispatch<SetStateAction<number>>
-    pages: number[]
+    pages?: number[]
 }
 
 export default function ItemsPages({ pages, setCurrentChunk }: ItemsPagesProps) {
