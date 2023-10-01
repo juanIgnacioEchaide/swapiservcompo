@@ -16,3 +16,14 @@ export default async function People() {
                 />
             </div>)
 }
+
+/* TODO:
+    -re-render RSC
+    -not render non-items page
+    -render suspense & loading
+    -cache of all chunks
+    -abstraction or dynamic pages
+    -style of pages
+    -"name" property for all except films with "title"
+    -unit testing
+*/
