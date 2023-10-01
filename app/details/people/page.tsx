@@ -1,4 +1,5 @@
-import ItemsListContainer from "@/components/ItemsListContainer"
+import ItemsListContainer from "@/components/items-list/ItemsListContainer"
+import PageTitle from "@/components/page/pageTitle"
 import { api } from "@/services/api"
 import { Title } from "@/utils/constants"
 
@@ -7,6 +8,7 @@ export default async function People() {
     const { data, pages } = await api.getPeople()
 
     return (<div>
+                <PageTitle title={Title.PEOPLE as string} />
                 <ItemsListContainer
                     items={data}
                     title={Title.PEOPLE}
