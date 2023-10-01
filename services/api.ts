@@ -26,9 +26,9 @@ async function getPagesChunk(url: URI, page?: number) {
 
     while (currentFetch <= fetchLimit) {
         try {
-            let currentData = await getSinglePage(url, currentFetch); // Wait for the asynchronous call to complete
-            dataChunks.push(currentData); // Add currentData to dataChunks array
-            currentFetch++; // Increment currentFetch for the next iteration
+            let currentData = await getSinglePage(url, currentFetch); 
+            dataChunks.push(currentData?.results); 
+            currentFetch++; 
         } catch (e: any) {
             throw new Error(e.message);
         }
