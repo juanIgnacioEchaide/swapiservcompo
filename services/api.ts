@@ -66,7 +66,7 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
             }
         }
 
-        //return model object
+        //returned model object
         const result: PagesChunkResult = {
             data: dataChunks,
             lastPageFetched: currentFetch - 1,

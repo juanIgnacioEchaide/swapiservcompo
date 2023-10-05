@@ -19,7 +19,7 @@ export default async function People({ params }: { params: { lastFetchedPage: nu
                     title={Title.PEOPLE}
                     availablePages={pages}
                 />
-                <p>last {pages}</p>
+                <p>last {lastPageFetched}</p>
             </div>)
 }
 
