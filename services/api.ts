@@ -3,8 +3,10 @@ import { DEFAULT_FETCH_AMOUNT, URI } from "@/utils/constants";
 import CacheManager from "@/lib/cache-manager"
 
 async function getSinglePage(url: URI, page?: number) {
+    //if page is not provided base URI used to fetch
     const _url = !page ? url : `${url}?page=${page}`
 
+    //promise try-catch block
     try {
         const response = await fetch(_url, {
             method: 'GET',
@@ -25,36 +27,66 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
     const cachedData = CacheManager.getDataFromCache(cacheKey);
     let availablePages: number = 0;
 
+    //if data is cached return without fetching
     if (cachedData) {
         return cachedData;
     }
 
+    //if number param is not provided sets 1 for pages
     let currentFetch = !page ? 1 : page;
     const fetchLimit = !page ? DEFAULT_FETCH_AMOUNT : page + DEFAULT_FETCH_AMOUNT;
     const dataChunks: any[][] = [];
 
-    while (currentFetch <= fetchLimit) {
-        try {
-            const currentData = await getSinglePage(url, currentFetch);
-            availablePages = currentData?.count
-            dataChunks.push(currentData?.results);
-            currentFetch++;
-            
-        } catch (e: any) {
-            throw new Error(e.message);
+    //promise implementation
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        const responseData = await response.json();
+
+        // double check of number of pages
+        if (responseData && responseData.count) {
+            availablePages = responseData.count;
+        } else {
+            throw new Error('Invalid API response format');
         }
+
+        //consecutive fetches until limit is reached
+        while (currentFetch <= fetchLimit) {
+            try {
+                const { results } = await getSinglePage(url, currentFetch);
+                dataChunks.push(results);
+                currentFetch++;
+            } catch (e: any) {
+                throw new Error(e.message);
+            }
+        }
+
+        //return model object
+        const result: PagesChunkResult = {
+            data: dataChunks,
+            lastPageFetched: currentFetch - 1,
+            availablePages
+        };
+
+        //stored in cache
+        CacheManager.setDataToCache(cacheKey, result, 3600);
+
+        return result;
+
+    } catch (error: any) {
+
+        //promise rejection
+        throw new Error(
+            'Error fetching data from the API: ' +
+             error?.message);
     }
-
-    const result: PagesChunkResult = {
-        data: dataChunks,
-        lastPageFetched: currentFetch - 1,
-        availablePages: availablePages
-    };
-
-    CacheManager.setDataToCache(cacheKey, result, 3600);
-
-    return result;
 }
+
 
 
 export const api = {

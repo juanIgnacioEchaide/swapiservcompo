@@ -1,3 +1,4 @@
+import { SwapiEntity } from "@/models/entities"
 import { setKey } from "@/utils/helpers"
 
 interface ItemsListProps {
