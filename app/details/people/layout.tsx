@@ -22,7 +22,9 @@ export default function Layout({ children }: BaseWrapperProps) {
                     alignItems: 'center',
                     paddingLeft: '5%',
                 }}>
-                <h1>People</h1>
+                <h1 style={{
+                    fontSize: '3.75em'
+                }}>People</h1>
             </nav>
             <main
                 style={{
