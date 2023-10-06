@@ -3,6 +3,7 @@ import Loading from "@/components/atoms/page/Loading"
 import { SwapiEntity } from "@/models/entities"
 import { isPeople, isFilm, setKey } from "@/utils/helpers"
 import { Dispatch, SetStateAction } from "react"
+import './ItemList.css'
 
 interface ItemsListProps {
     items: SwapiEntity[]
@@ -24,142 +25,36 @@ export default function ItemsList({
     setSelectedItemIndex,
 }: ItemsListProps) {
 
-    return <div
-        style={{
-            width: '100vw',
-            height: '80vh',
-            justifyContent: 'center',
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: 'row',
-            overflow: 'hidden'
-        }}>
-        <div
-            style={{
-                width: '60vw',
-                height: '80vh',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-            <div
-                style={{
-                    width: '60vw',
-                    height: '80vh',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    overflow: 'hidden',
-                }}>
-                <div
-                    style={{
-                        width: '70vw',
-                        height: '70vh',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        overflow: 'hidden',
-                    }}>
+    return (
+        <div className="items-list-container">
+            <div className="details-section">
+                <div className="details-wrapper">
                     <EntityDetails key={setKey()} data={selectedItem as unknown as { [key: string]: string; }} />
                 </div>
-
+            </div>
+            <div className="items-list-section">
+                <div className="items-list-container-inner">
+                    {items ? items.map((item, index) => (
+                        <div className="item" key={setKey()} onClick={() => setSelectedItemIndex(index)}>
+                            <p style={{ fontWeight: selectedItemIndex && index === selectedItemIndex ? 1000 : 3000 }}>
+                                {isPeople(item) && item.name}
+                                {isFilm(item) && item.title}
+                            </p>
+                        </div>
+                    )) : <Loading />}
+                </div>
+                <div className="pagination">
+                    <div className="pagination-button" onClick={() => currentIndex && currentIndex > 1 && setCurrentIndex(currentIndex - 1)}>
+                        <p>prev</p>
+                    </div>
+                    <div className="page-number">{currentIndex}</div>
+                    <div className="page-number">/</div>
+                    <div className="page-number">{availablePages}</div>
+                    <div className="pagination-button" onClick={() => currentIndex && currentIndex < availablePages && setCurrentIndex(currentIndex + 1)}>
+                        <p>next</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div
-            style={{
-                width: '40vw',
-                height: '80vh',
-                background: 'red',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-
-            }}>
-            <div
-                style={{
-                    width: '40vw',
-                    height: '50vh',
-                    background: 'red',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    paddingTop: '2%',
-                    textAlign: 'justify'
-                }}>
-                {
-                    items ?
-                        items?.map((item, index) =>
-                            <div key={setKey()}
-                                style={{
-                                    cursor: 'pointer'
-                                }}
-                                onClick={() => setSelectedItemIndex(index)}>
-                                <p key={setKey()}
-                                    style={{
-                                        fontWeight: selectedItemIndex && (index === selectedItemIndex) ? 1000 : 3000,
-                                    }}
-                                >
-                                    {isPeople(item) && item.name}
-                                    {isFilm(item) && item.title} </p>
-                            </div>) :
-                        <Loading />
-                }
-            </div>
-            <div
-                style={{
-                    width: '40vw',
-                    height: '20vh',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    fontFamily: 'monospace, sans-serif'
-                }}>
-                <div
-                    style={{
-                        cursor: 'pointer',
-                        paddingLeft: '20%'
-                    }}
-                    onClick={() => currentIndex && currentIndex > 1 &&
-                        setCurrentIndex(currentIndex - 1)}>
-                    <p>prev</p>
-                </div>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                }}>
-                    <p
-                        style={{
-                            fontSize: '5vh',
-                            fontWeight: 4000
-                        }}>
-                        {currentIndex}
-                    </p>
-                    <p
-                        style={{
-                            fontSize: '5vh',
-                            fontWeight: 1000
-                        }}>/</p>
-                    <p
-                        style={{
-                            fontSize: '5vh',
-                            fontWeight: 1000
-                        }}>{availablePages}</p>
-                </div>
-                <div
-                    style={{
-                        cursor: 'pointer',
-                        paddingRight: '20%'
-                    }}
-                    onClick={() => currentIndex && currentIndex < availablePages &&
-                        setCurrentIndex(currentIndex + 1)}>
-                    <p>next</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    );
 }
