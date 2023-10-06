@@ -1,6 +1,6 @@
 import { People, SwapiEntity } from "@/models/entities"
 import { setKey } from "@/utils/helpers"
-import ItemsPages from "./itemsPages"
+import ItemsPages from "../../molecules/page/itemsPages"
 import { Dispatch, SetStateAction } from "react"
 
 interface ItemsListProps {

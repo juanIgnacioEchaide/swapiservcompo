@@ -1,4 +1,5 @@
 import { Title } from "@/utils/constants";
+
 interface PageTitleProps {
     title: string
 }

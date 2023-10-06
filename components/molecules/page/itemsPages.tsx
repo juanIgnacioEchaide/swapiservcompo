@@ -1,6 +1,6 @@
 import { setKey } from "@/utils/helpers"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import PageButton from "./PageButton"
+import PageButton from "../../atoms/page/PageButton"
 
 interface ItemsPagesProps {
     setCurrentChunk: Dispatch<SetStateAction<number>>

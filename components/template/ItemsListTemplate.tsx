@@ -2,12 +2,10 @@
 
 import { Suspense, useEffect, useState } from "react";
 
-import Loading from "../page/Loading";
-import ItemsPages from "./itemsPages";
+import Loading from "../atoms/page/Loading";
 import { SwapiEntity } from "@/models/entities"
-import ItemsList from "./ItemsList";
-import { Title } from "@/utils/constants";
-import PageTitle from "../page/pageTitle";
+import ItemsList from "../organisms/items-list/ItemsList";
+import PageTitle from "../atoms/page/pageTitle";
 
 interface ItemsListContainerProps<SwapiEntity> {
     title: string
