@@ -1,6 +1,7 @@
 
 ## NEXT JS SERVER COMPONENT EXAMPLE 
-- Fetching an API from a RSC and handling pagination from client children components
+- Retrieving data from Star Wars public API
+- Fetching data from a RSC and handling pagination from client children components
 - Re usage of items list view
 - Data cache managed with node-cache
 - Route handling with app directory
