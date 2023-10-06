@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React from "react";
-import { wording } from '@/utils/constants';
 import { BaseWrapperProps } from '@/models/props';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'Swapi Server Component',
+    title: 'Swapi People',
     description: 'Example using server component Star Wars API',
 }
 

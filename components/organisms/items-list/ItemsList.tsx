@@ -1,6 +1,6 @@
 import Loading from "@/components/atoms/page/Loading"
 import { SwapiEntity } from "@/models/entities"
-import { isPeople, setKey } from "@/utils/helpers"
+import { isPeople, isFilm, setKey } from "@/utils/helpers"
 import { Dispatch, SetStateAction } from "react"
 
 interface ItemsListProps {
@@ -99,7 +99,9 @@ export default function ItemsList({
                                     style={{
                                         fontWeight: selectedItemIndex && (index === selectedItemIndex) ? 1000 : 3000,
                                     }}
-                                > {isPeople(item) && item.name} </p>
+                                >
+                                    {isPeople(item) && item.name}
+                                    {isFilm(item) && item.title} </p>
                             </div>) :
                         <Loading />
                 }
