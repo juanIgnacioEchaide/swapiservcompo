@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google'
 import React from "react";
 import { wording } from '@/utils/constants';
 import { BaseWrapperProps } from '@/models/props';
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] })
 
