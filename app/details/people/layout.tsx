@@ -13,27 +13,24 @@ export const metadata: Metadata = {
 export default function Layout({ children }: BaseWrapperProps) {
     return (
         <div>
-            <header>
-                <nav
-                    style={{
-                        backgroundColor: 'black',
-                        width:'100vw',
-                        height: '7vh',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        paddingLeft: '5%',
-                    }}>
-                    <h1>People</h1>
-                </nav>
-            </header>
+            <nav
+                style={{
+                    width: '100vw',
+                    height: '7vh',
+                    color: 'black',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: '5%',
+                }}>
+                <h1>People</h1>
+            </nav>
             <main
-             style={{
-                backgroundColor: 'blue',
-                width:'100vw',
-                height: '70vh',
-                color: 'white',
-            }}>
+                style={{
+                    backgroundColor: 'blue',
+                    width: '100vw',
+                    height: '70vh',
+                    color: 'white',
+                }}>
                 {children}
             </main>
         </div>

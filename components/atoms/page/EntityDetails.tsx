@@ -9,7 +9,6 @@ export default function EntityDetails({ data }:EntityDetailsProps){
     <div
       style={{
         borderRadius: '30%',
-        border: '2px solid #ccc',
         padding: '20px',
         margin: '10px',
       }}
