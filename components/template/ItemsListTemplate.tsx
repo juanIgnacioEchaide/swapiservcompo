@@ -1,6 +1,6 @@
 "use client";
 
-import { SetStateAction, Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 
 import Loading from "../atoms/page/Loading";
 import { SwapiEntity } from "@/models/entities"
@@ -46,15 +46,15 @@ export default function ItemsListTemplate({
     }, [handleSelectedItem])
 
     return (<div>
-        <Suspense fallback={<Loading />}>
-            <ItemsList
-                items={currentChunk}
-                selectedItem={selectedItem}
-                availablePages={availablePages}
-                currentIndex={currentIndex}
-                setCurrentIndex={setCurrentIndex}
-                selectedItemIndex={selectedItemIndex}
-                setSelectedItemIndex={setSelectedItemIndex} />
-        </Suspense>
-    </div>)
+                <Suspense fallback={<Loading />}>
+                    <ItemsList
+                        items={currentChunk}
+                        selectedItem={selectedItem}
+                        availablePages={availablePages}
+                        currentIndex={currentIndex}
+                        setCurrentIndex={setCurrentIndex}
+                        selectedItemIndex={selectedItemIndex}
+                        setSelectedItemIndex={setSelectedItemIndex} />
+                </Suspense>
+            </div>)
 }

@@ -19,8 +19,11 @@ export default function Layout({ children }: BaseWrapperProps) {
                     style={{
                         backgroundColor: 'black',
                         width:'100vw',
-                        height: '10vh',
+                        height: '7vh',
                         color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        paddingLeft: '5%',
                     }}>
                     <h1>People</h1>
                 </nav>
