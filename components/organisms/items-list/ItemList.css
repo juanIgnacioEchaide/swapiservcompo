@@ -34,6 +34,7 @@
 }
 
 .items-list-container-inner {
+    padding-top: 5%;
     width: 100%; 
     background: red;
     display: flex;
@@ -42,6 +43,7 @@
     align-items: center;
     text-align: justify;
     overflow: hidden;
+    line-height: 35%;
 }
 
 .item {
@@ -57,7 +59,6 @@
     justify-content: space-between;
     align-items: center;
     font-family: monospace, sans-serif;
-    padding: 1em 0;
 }
 
 .pagination-button {
@@ -65,7 +66,12 @@
     padding: 0 20px;
 }
 
-.page-number {
-    font-size: 2vh;
+.page-number-bold {
+    font-size: 3vh;
+    font-weight: 600;
+}
+
+.page-number-light {
+    font-size: 3vh;
     font-weight: 400;
 }
