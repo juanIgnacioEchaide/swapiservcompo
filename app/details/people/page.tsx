@@ -1,5 +1,4 @@
 import { api } from "@/services/api"
-import { generateConsecutiveNumbers } from "@/utils/helpers"
 import ItemsListTemplate from "@/components/template/ItemsListTemplate"
 
 export default async function People({ params }: { params: { lastFetchedPage: number } }) {
@@ -9,11 +8,3 @@ export default async function People({ params }: { params: { lastFetchedPage: nu
                <ItemsListTemplate items={data} availablePages={lastPageFetched} />
             </div>)
 }
-
-/* 
- <ItemsListTemplate
-    items={data}
-    title={Title.PEOPLE}
-    availablePages={pages}
-    lastPageFetched={lastPageFetched} />
-*/

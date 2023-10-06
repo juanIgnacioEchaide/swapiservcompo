@@ -1,3 +1,4 @@
+import EntityDetails from "@/components/atoms/page/EntityDetails"
 import Loading from "@/components/atoms/page/Loading"
 import { SwapiEntity } from "@/models/entities"
 import { isPeople, isFilm, setKey } from "@/utils/helpers"
@@ -52,14 +53,14 @@ export default function ItemsList({
                 }}>
                 <div
                     style={{
-                        width: '50vw',
-                        height: '50vh',
+                        width: '70vw',
+                        height: '70vh',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         overflow: 'hidden',
                     }}>
-                    <p>{JSON.stringify(selectedItem, null, 2)}</p>
+                    <EntityDetails key={setKey()} data={selectedItem as unknown as { [key: string]: string; }} />
                 </div>
 
             </div>
@@ -162,14 +163,3 @@ export default function ItemsList({
         </div>
     </div>
 }
-
-/*   {items?.length ?
-                items?.map((item: SwapiEntity, _idx: number) =>
-                    <div key={setKey()}>
-                        {JSON.stringify(item)}
-                    </div>) :
-                <Loading />}
-                <ItemsPages
-                    pages={availablePages}
-                    setCurrentChunk={setCurrentIndex}
-                />*/
