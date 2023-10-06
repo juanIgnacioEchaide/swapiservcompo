@@ -1,5 +1,6 @@
 import { setKey } from "@/utils/helpers"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import PageButton from "./PageButton"
 
 interface ItemsPagesProps {
     setCurrentChunk: Dispatch<SetStateAction<number>>
@@ -7,15 +8,35 @@ interface ItemsPagesProps {
 }
 
 export default function ItemsPages({ pages, setCurrentChunk }: ItemsPagesProps) {
-    return <div style={{
-        display: 'flex',
-        flexDirection: 'row',
-        cursor: 'pointer'
-    }}>
-        {pages?.map((pageNum: number) => <div
-            key={setKey()}
-            onClick={(e) => setCurrentChunk(pageNum)}>
-            {pageNum}
-        </div>)}
-    </div>
+
+    const [pageButtons, setPageButtons] = useState<{pageNum: number, isSelected: boolean}[]>([])
+
+    useEffect(() => {
+        if(pages?.length){
+            setPageButtons(() => {
+                return pages?.map((i) => ({
+                    pageNum: i,
+                    isSelected: false
+                }))
+            })
+        }
+    } ,[pages])
+
+    return (<div 
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    cursor: 'pointer',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    width: '80%'
+                }}>
+                {pageButtons?.map((button: {pageNum: number, isSelected: boolean}) => 
+                    <PageButton 
+                        key={setKey()} 
+                        number={button.pageNum}
+                        isSelected={button.isSelected}
+                        onClick={() => setCurrentChunk(button.pageNum)}
+                        />)}
+            </div>)
 }

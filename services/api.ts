@@ -59,6 +59,13 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
         while (currentFetch <= fetchLimit) {
             try {
                 const { results } = await getSinglePage(url, currentFetch);
+
+                if (results && results.length > 0) {
+                    dataChunks.push(results);
+                } else {
+                    // avoiding to return empty chunks
+                    break;
+                }
                 dataChunks.push(results);
                 currentFetch++;
             } catch (e: any) {
@@ -69,7 +76,7 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
         //returned model object
         const result: PagesChunkResult = {
             data: dataChunks,
-            lastPageFetched: currentFetch - 1,
+            lastPageFetched: currentFetch,
             availablePages
         };
 

@@ -1,0 +1,40 @@
+/* styles.module.css */
+
+/* ItemContainer Styles */
+.item_container {
+    border: 1px solid #000;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* ItemHeader Styles */
+.item_header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* ItemDetails and LabelContainer Styles */
+.item_details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.label_container {
+    display: flex;
+    align-items: center;
+}
+
+.detail_label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.detail_value {
+    font-weight: normal;
+}
