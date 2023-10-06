@@ -20,13 +20,17 @@ export default function ItemsListTemplate({
     availablePages, 
     lastPageFetched 
 }: ItemsListContainerProps<SwapiEntity>) {
-    const [currentIndex, setCurrentIndex] = useState<number>(0)
+    const [currentIndex, setCurrentIndex] = useState<number>(1)
     const [chunks, setChunks] = useState<SwapiEntity[][]>([])
     const [currentChunk, setCurrentChunk] = useState<SwapiEntity[]>([])
 
     useEffect(() => {
         setChunks(items)        
     },[currentIndex, items])
+
+    useEffect(() => {
+        setCurrentChunk(chunks[currentIndex])
+    }, [chunks, currentIndex])
 
     return (<div>
                 <Suspense fallback={<Loading />}>
