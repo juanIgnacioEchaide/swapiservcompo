@@ -17,13 +17,13 @@ export default function Layout({ children }: BaseWrapperProps) {
                 style={{
                     width: '100vw',
                     height: '7vh',
-                    color: 'black',
+                    color: 'blue',
                     display: 'flex',
                     alignItems: 'center',
                     paddingLeft: '5%',
                 }}>
                 <h1 style={{
-                    fontSize: '3.75em'
+                    fontSize: '4.75em'
                 }}>People</h1>
             </nav>
             <main

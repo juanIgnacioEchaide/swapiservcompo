@@ -28,7 +28,7 @@ export enum Title {
 export const fontFamily = "'Mona Sans', sans-serif"
 
 export const wording = {
-    title: 'Swapi Next JS Example',
+    title: 'Swapi Server Component',
     footer: 'Juan Ignacio Echaide - Swapi example - 2023'
 }
 

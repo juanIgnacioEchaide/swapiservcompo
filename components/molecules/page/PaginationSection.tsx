@@ -1,4 +1,5 @@
 import { PaginationSectionProps } from "@/models/props"
+import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 
 export function PaginationSection({
     currentIndex,
@@ -14,7 +15,7 @@ export function PaginationSection({
                 setCurrentIndex(currentIndex - 1)
                 setSelectedItemIndex(0)
             }}>
-            <p>prev</p>
+            <p><LeftCircleOutlined /></p>
         </div>
         <div style={{
             display: 'flex',
@@ -32,7 +33,7 @@ export function PaginationSection({
                     setCurrentIndex(currentIndex + 1)
                 setSelectedItemIndex(0)
             }}>
-            <p>next</p>
+            <p><RightCircleOutlined /></p>
         </div>
     </div>)
 }

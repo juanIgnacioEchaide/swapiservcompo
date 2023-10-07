@@ -4,26 +4,25 @@ import { setKey } from "@/utils/helpers";
 
 export function DetailsSection({ data }: DetailsSectionProps) {
 
-    return (<div className="details-section">
+    return (<div className="details-section" key={setKey()}>
         <div className="details-wrapper">
-            <div
+            <div className="details-left-wrapper"
                 style={{
                     borderRadius: '30%',
                     padding: '20px',
                     margin: '10px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textAlign: 'left',
                 }}
             >
-                {data && Object?.entries(data).map(([key, value]) => (
-                    <div key={key}>
-                        <strong>{key}:</strong> {value}
-                    </div>
-                ))}
+                <EntityDetails data={data} />
             </div>
             <div
-                className="details-wrapper"
+                className="details-right-wrapper"
                 style={{
                     backgroundColor: 'green'
-                }}>p</div>
+                }}>image</div>
         </div>
     </div>)
 }

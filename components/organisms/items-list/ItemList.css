@@ -24,6 +24,29 @@
     overflow: hidden;
 }
 
+
+.details-right-wrapper {
+    background-color: 'green';
+    width: 30vw;
+    height: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.details-left-wrapper {
+    background-color: black;
+    width: 70vw;
+    height: 30vw;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .items-list-section {
     width: 100%;
     height: 70vh;
@@ -67,10 +90,11 @@
 .pagination-button {
     cursor: pointer;
     padding: 0 20px;
+    font-size: 5vh;
 }
 
 .page-number {
     padding: 2vh;
-    font-size: 2vh;
+    font-size: 3vh;
     font-weight: 400;
 }

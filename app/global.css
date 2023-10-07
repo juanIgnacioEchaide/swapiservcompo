@@ -33,7 +33,8 @@ body {
 }
 
 .layout__header__title {
-    font-size: 2em;
+    font-size: 5em;
+    color: blue;
 }
 
 .layout__main {
