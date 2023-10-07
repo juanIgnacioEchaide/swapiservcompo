@@ -1,29 +1,8 @@
-import ItemsListContainer from "@/components/items-list/ItemsListContainer"
-import PageTitle from "@/components/page/pageTitle"
 import { api } from "@/services/api"
-import { Title } from "@/utils/constants"
+import ItemsListTemplate from "@/components/template/ItemsListTemplate"
 
-export default async function People() {
+export default async function People({ params }: { params: { lastFetchedPage: number } }) {
+    const { data, lastPageFetched } = await api.getPeople(params?.lastFetchedPage)
 
-    const { data, pages } = await api.getPeople()
-
-    return (<div>
-                <PageTitle title={Title.PEOPLE as string} />
-                <ItemsListContainer
-                    items={data}
-                    title={Title.PEOPLE}
-                    pages={pages}
-                />
-            </div>)
+    return (<ItemsListTemplate items={data} availablePages={lastPageFetched} />)
 }
-
-/* TODO:
-    -re-render RSC
-    -not render non-items page
-    -render suspense & loading
-    -cache of all chunks
-    -abstraction or dynamic pages
-    -style of pages
-    -"name" property for all except films with "title"
-    -unit testing
-*/

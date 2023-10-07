@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@types/uuid": "^9.0.4",
     "next": "latest",
+    "node-cache": "^5.1.2",
     "react": "latest",
     "react-dom": "latest",
     "uuid": "^9.0.1"

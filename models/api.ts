@@ -1,4 +1,7 @@
+import { SwapiEntity } from "./entities";
+
 export interface PagesChunkResult {
     data: SwapiEntity[][];
-    pages: number[];
+    lastPageFetched: number
+    availablePages: number
 }
