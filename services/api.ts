@@ -45,7 +45,7 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
                 'Content-Type': 'application/json'
             }
         });
-        
+
         const responseData = await response.json();
 
         // double check of number of pages
@@ -72,13 +72,13 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
                 throw new Error(e.message);
             }
         }
-
         //returned model object
         const result: PagesChunkResult = {
             data: dataChunks,
             lastPageFetched: currentFetch,
             availablePages
         };
+
 
         //stored in cache
         CacheManager.setDataToCache(cacheKey, result, 3600);
@@ -90,7 +90,7 @@ async function getPagesChunk(url: URI, page?: number): Promise<PagesChunkResult>
         //promise rejection
         throw new Error(
             'Error fetching data from the API: ' +
-             error?.message);
+            error?.message);
     }
 }
 

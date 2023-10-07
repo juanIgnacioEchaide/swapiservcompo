@@ -12,3 +12,30 @@ export function isPeople(entity: SwapiEntity): entity is People {
 export function isFilm(entity: SwapiEntity): entity is Film {
   return (entity as Film).episodeId !== undefined;
 }
+
+export function formatSnakeCase(str: string): string {
+  return str.split('_').map(word => capitalizeFirstLetter(word)).join(' ');
+}
+
+export function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function filterAndFormatData(data: Record<string, string>){
+  return Object.entries(data)
+    .filter(([key, value]) => {
+      // Exclude specified keys and keys with empty values
+      if (['url', 'homeworld', 'films', 'created', 'edited', 'vehicles', 'starships'].includes(key) || !value) {
+        return false;
+      }
+      // Replace empty species value with "human"
+      if (key === 'species' && !value) {
+        return ['species', 'human'];
+      }
+      return true;
+    })
+    .map(([key, value]) => ({
+      formattedKey: formatSnakeCase(key),
+      value: key === 'species' ? 'human' : value,
+    }));
+};

@@ -1,23 +1,27 @@
+import React, { useMemo } from 'react';
+import { filterAndFormatData, formatSnakeCase } from '@/utils/helpers';
+import './EntityDetails.css';
+
 interface EntityDetailsProps {
-  data: {
-    [key: string]: string;
-  };
+  data: Record<string, string>;
 }
 
-export default function EntityDetails({ data }:EntityDetailsProps){
+const EntityDetails: React.FC<EntityDetailsProps> = ({ data }: EntityDetailsProps) => {
+  const formattedData = useMemo(() => {
+    if (data) {
+      return filterAndFormatData(data);
+    }
+  }, [data]);
+
   return (
-    <div
-      style={{
-        borderRadius: '30%',
-        padding: '20px',
-        margin: '10px',
-      }}
-    >
-      {data && Object?.entries(data).map(([key, value]) => (
-        <div key={key}>
-          <strong>{key}:</strong> {value}
+    <div className="entity-details">
+      {formattedData?.map(({ formattedKey, value }) => (
+        <div key={formattedKey}>
+          <strong>{formattedKey}:</strong> {value}
         </div>
       ))}
     </div>
   );
 };
+
+export default EntityDetails;

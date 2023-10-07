@@ -6,16 +6,7 @@ export function DetailsSection({ data }: DetailsSectionProps) {
 
     return (<div className="details-section" key={setKey()}>
         <div className="details-wrapper">
-            <div className="details-left-wrapper"
-                style={{
-                    borderRadius: '30%',
-                    padding: '20px',
-                    margin: '10px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    textAlign: 'left',
-                }}
-            >
+            <div className="details-left-wrapper">
                 <EntityDetails data={data} />
             </div>
             <div

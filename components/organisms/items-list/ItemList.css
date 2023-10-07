@@ -14,7 +14,7 @@
 }
 
 .details-wrapper {
-    border-radius: 3%;
+    border-radius: '30%';
     background-color: black;
     width: 50vw;
     height: 30vw;
@@ -26,17 +26,22 @@
 
 
 .details-right-wrapper {
+    overflow: hidden;
     background-color: 'green';
     width: 30vw;
     height: 30vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 
 .details-left-wrapper {
+    padding: '20px';
+    margin: '10px';
+    display: 'flex';
+    flex-direction: 'column';
+    text-align: 'left';
     background-color: black;
     width: 70vw;
     height: 30vw;
@@ -55,12 +60,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .items-list-container-inner {
     padding-top: 5%;
-    width: 100%; 
+    width: 100%;
     background: red;
     display: flex;
     flex-direction: column;
