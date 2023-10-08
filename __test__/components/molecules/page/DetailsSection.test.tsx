@@ -2,10 +2,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { DetailsSection } from '@/components/molecules/page/DetailsSection';
-import { AppProps } from 'next/app';
 
 jest.mock('@/components/atoms/page/EntityDetails', () => {
-  return function MockEntityDetails(props: AppProps) {
+  return function MockEntityDetails(props: any) {
     return <div data-testid="entity-details-mock">{JSON.stringify(props)}</div>;
   };
 });

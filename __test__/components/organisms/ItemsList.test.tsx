@@ -22,7 +22,7 @@ jest.mock('@/components/molecules/page/PaginationSection', () => ({
 
 describe('ItemsList Component', () => {
   it('should render child components correctly', () => {
-    const mockItems = [{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }]as unknown as SwapiEntity[];
+    const mockItems = [{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' },] as unknown as SwapiEntity[];
     const mockSelectedItem = { id: 1, name: 'Item 1' } as unknown as SwapiEntity;
     const mockAvailablePages = 2;
     const mockCurrentIndex = 1;

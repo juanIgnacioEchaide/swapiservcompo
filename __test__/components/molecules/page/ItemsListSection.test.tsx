@@ -14,10 +14,9 @@ jest.mock('@/app/loading', () => ({
 
 describe('ItemListSection Component', () => {
   it('should render items and handle click events correctly', () => {
-    const mockItems = [
-      { id: 1, name: 'Person 1' },
-      { id: 2, name: 'Person 2' },
-    ] as any[];
+    const mockItems: SwapiEntity[] = [
+      { name: 'Luke Skywalker', } as SwapiEntity,
+    ];
     const mockSelectedItemIndex = 1;
     const mockSetSelectedItemIndex = jest.fn();
 
@@ -38,8 +37,8 @@ describe('ItemListSection Component', () => {
 
   it('should render Loading component when items are not provided', () => {
     const { getByTestId } = render(<ItemListSection items={[]} selectedItemIndex={undefined} setSelectedItemIndex={function (value: React.SetStateAction<number>): void {
-        throw new Error('Function not implemented.');
-    } } />);
+      throw new Error('Function not implemented.');
+    }} />);
     const loadingElement = getByTestId('loading-mock');
 
     expect(loadingElement).toBeInTheDocument();

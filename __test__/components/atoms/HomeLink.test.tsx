@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import sinon from 'sinon';
 import { HomeLink } from '@/components/atoms/page/HomeLink';
+import Link from 'next/link';
 
 
 describe('HomeLink Component', () => {
