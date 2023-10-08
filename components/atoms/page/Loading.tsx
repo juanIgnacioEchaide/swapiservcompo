@@ -10,7 +10,7 @@ export default function LoadingComponent() {
 
         }}>
         <LoadingOutlined style={{
-            fontSize: '30vh'
+            fontSize: '20vh'
         }} />
     </div>
 }

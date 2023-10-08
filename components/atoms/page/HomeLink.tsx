@@ -40,6 +40,7 @@ export function HomeLink({ title, imageUrl, route }: HomeLinkProps) {
         <div
           style={{
             alignItems: 'center',
+            textDecoration: 'none',
             justifyContent: 'space-between',
           }}
         >
