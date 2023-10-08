@@ -59,6 +59,7 @@ export function HomeLink({ title, imageUrl, route }: HomeLinkProps) {
           <div
             style={{
               padding: '5vh',
+              width: '15vw',
               textDecoration: 'none',
               backgroundColor: 'black',
               alignItems: 'center',

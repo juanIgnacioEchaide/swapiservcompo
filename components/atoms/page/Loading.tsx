@@ -1,8 +1,16 @@
+import { LoadingOutlined } from "@ant-design/icons";
+
 export default function LoadingComponent() {
-    return <p
+    return <div
         style={{
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
 
-        }}>...loading</p>
+        }}>
+        <LoadingOutlined style={{
+            fontSize: '30vh'
+        }} />
+    </div>
 }
