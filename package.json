@@ -11,11 +11,13 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@types/mocha": "^10.0.2",
+    "@types/sinon": "^10.0.19",
     "@types/uuid": "^9.0.4",
     "next": "latest",
     "node-cache": "^5.1.2",
     "react": "latest",
     "react-dom": "latest",
+    "sinon": "^16.1.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
